@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                       http://www.springframework.org/schema/beans/spring-beans.xsd
+                       http://www.springframework.org/schema/context
+                       http://www.springframework.org/schema/context/spring-context.xsd
+                       http://www.springframework.org/schema/aop
+                       http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<context:annotation-config/>
+	
+	<bean id="h1" class="kr.hs.study.beans.HelloKo"/>
+	<bean id="h2" class="kr.hs.study.beans.HelloEn"/>
+	<bean id="h3" class="kr.hs.study.beans.HelloJa"/>
+	<bean id="advisor" class="kr.hs.study.advisor.Advice"/>
+	
+	<aop:config>
+	
+		<aop:aspect ref="advisor">
+			<!-- execution 리턴타입 패키지명 클래스이름 메소드이름 -->
+			<!-- execution(* kr.hs.study..*Bean1.method*() -->
+			<!-- 리턴타입 상관 없고 kr.hs.study 밑의 모든 패키지에서 Bean1으로 끝나는 클래스 안의 method로
+			시작하는 모든 메소드 -->
+			<aop:pointcut id="point1" expression="execution(* kr.hs.study.beans.HelloJa.hello*())"/>
+			<aop:after method="after" pointcut-ref="point1"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="advisor">
+			<aop:pointcut id="point2" expression="execution(* kr.hs.study.beans.HelloKo.hello1())"/>
+			<aop:around method="around" pointcut-ref="point2"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="advisor">
+			<aop:pointcut id="point3" expression="execution(* kr.hs.study.beans.HelloEn.hello1())"/>
+			<aop:around method="around" pointcut-ref="point3"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="advisor">
+			<aop:pointcut id="point4" expression="execution(* kr.hs.study.beans.HelloEn.hello2())"/>
+			<aop:after-returning method="afterReturning" pointcut-ref="point4"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="advisor">
+			<aop:pointcut id="point5" expression="execution(* kr.hs.study.beans.HelloJa.hello2())"/>
+			<aop:after-returning method="afterReturning" pointcut-ref="point5"/>
+		</aop:aspect>
+		
+	</aop:config>
+	
+</beans>
+

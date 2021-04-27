@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- IOC container 에서 객체생성 -->
+	<!-- xml파일을 로딩할때 객체가 생성됨 -->
+	<!-- <bean class="kr.hs.study.beans.TestBean"/> -->
+
+	<!-- 1.constructor DI로 kim, red, 3000, sonata 출력
+	setter DI로 lee, blue, 5000, k9 출력
+	자동주입으로 park, green, 7000, avante 출력 -->
+
+	<bean id="c1" class="kr.hs.study.beans.CarBean">
+		<constructor-arg value="3000" index="0"/> <!-- 차가격 -->
+		<constructor-arg value="Sonata" index="1"/> <!-- 차종 -->
+	</bean>
+	
+	<bean id="c2" class="kr.hs.study.beans.CarBean">
+		<constructor-arg value="5000" index="0"/> <!-- 차가격 -->
+		<constructor-arg value="k9" index="1"/> <!-- 차종 -->	
+	</bean>
+	
+	<bean id="u1" class="kr.hs.study.beans.CarUserBean">
+		<constructor-arg value="kim" index="0" type="java.lang.String"/> <!-- 차주이름 -->
+		<constructor-arg value="red" index="1" type="java.lang.String"/> <!-- 차색깔 -->
+		<constructor-arg ref="c1"/>
+	</bean>
+	
+	<bean id="u2" class="kr.hs.study.beans.CarUserBean">
+		<property name="owner" value="lee"/>
+		<property name="color" value="blue"/>
+		<property name="car_type" ref="c2"/>
+	</bean>
+	
+	<bean id="u3" class="kr.hs.study.beans.CarUserBean" autowire="byName"> <!-- 자동주입시에는 setter 주입 -->
+		<property name="owner" value="park"/>
+		<property name="color" value="green"/>
+	</bean>
+	
+	<bean id="car_type" class="kr.hs.study.beans.CarBean">
+		<constructor-arg value="7000" index="0"/> <!-- 차가격 -->
+		<constructor-arg value="Avante" index="1"/> <!-- 차종 -->
+	</bean>
+	
+</beans>

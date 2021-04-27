@@ -1,0 +1,9 @@
+package kr.hs.study.dao;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import kr.hs.study.dto.LoginDTO;
+
+public class MapperClass implements RowMapper<LoginDTO>{
+		
+}

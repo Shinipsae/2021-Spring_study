@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- IOC container 에서 객체생성 -->
+	<!-- xml파일을 로딩할때 객체가 생성됨 -->
+<!-- 	<bean class="kr.hs.study.beans.TestBean"/> -->
+
+	<bean id="t1" class="kr.hs.study.beans.TestBean" init-method="testBean_init" destroy-method="testBean_destroy"/>
+	<!-- 설정이 같다면 중복해서 속성을 bean에 넣지 말고 init-method -> default-init-method 나
+	destroy-method -> default-destroy-method로 beans 태그에 넣어도 됨 단 bean에 만들때에는 꼭 메서드 구현이 필요 -->
+
+</beans>

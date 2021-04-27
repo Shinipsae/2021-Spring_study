@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- IOC container 에서 객체생성 -->
+	<!-- xml파일을 로딩할때 객체가 생성됨 -->
+<!-- 	<bean class="kr.hs.study.beans.TestBean"/> -->
+
+	<bean id="samsungTv" class="kr.hs.study.beans.SamsungTv">
+		<constructor-arg type="int" value="0"/>
+		<constructor-arg type="boolean" value="false"/>
+	</bean>
+	<bean id="lgTv" class="kr.hs.study.beans.LgTv">
+		<constructor-arg type="int" value="0"/>
+		<constructor-arg type="boolean" value="false"/>
+	</bean>
+	
+</beans>

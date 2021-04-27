@@ -1,0 +1,55 @@
+package kr.hs.study.main;
+
+import java.util.List;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import kr.hs.study.config.JavaConfig;
+import kr.hs.study.dao.BookDAO;
+import kr.hs.study.dto.BookDTO;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+		AnnotationConfigApplicationContext ctx = 
+				new AnnotationConfigApplicationContext(JavaConfig.class);
+		
+		// LoginDAO 가져오기
+		BookDAO dao = ctx.getBean(BookDAO.class);
+		// LoginDTO 가져오기(id:bean1)
+		BookDTO bean1 = ctx.getBean(BookDTO.class);
+		
+		// bean1에 kim, 1111 세팅
+		bean1.setTitle("");
+		bean1.setAuthor("");
+		bean1.setPrice(0);
+		bean1.setEmail("");
+
+		// dao의 메소드 호출
+		dao.insert_data(bean1);
+		System.out.println("저장완료");
+		
+		BookDTO bean2 = ctx.getBean(BookDTO.class);
+		bean2.setPrice(0);
+		bean2.setTitle("");
+//		dao.update_data(bean2);
+		System.out.println("수정완료");
+		
+		BookDTO bean3 = ctx.getBean(BookDTO.class);
+		bean3.setUserId("kim");
+//		dao.delete_data(bean3);
+		System.out.println("삭제완료");
+
+		List<BookDTO> list = dao.select_data();
+		for(BookDTO dto : list) {
+			System.out.println(dto.getUserId());
+			System.out.println(dto.getUserPass());
+		}
+		System.out.println("출력완료");
+		
+		ctx.close();
+
+	}
+
+}

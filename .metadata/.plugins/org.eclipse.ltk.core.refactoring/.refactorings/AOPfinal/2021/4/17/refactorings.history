@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;config.xml&apos; to &apos;DBTest/src/main/java/kr.hs.study.config&apos;&#x0D;&#x0A;- Original project: &apos;AOPfinal&apos;&#x0D;&#x0A;- Destination element: &apos;DBTest/src/main/java/kr.hs.study.config&apos;&#x0D;&#x0A;- Original element: &apos;config.xml&apos;" description="Copy file" destination="=DBTest/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;kr.hs.study.config" element1="src/main/java/kr/hs/study/config/config.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1618877992261" units="0" version="1.0"/>
+</session>

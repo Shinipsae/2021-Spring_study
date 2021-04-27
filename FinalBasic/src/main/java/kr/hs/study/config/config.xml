@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- IOC container 에서 객체생성 -->
+	<!-- xml파일을 로딩할때 객체가 생성됨 -->
+<!-- 	<bean id="asdf" class="kr.hs.study.beans.TestBean"/> -->
+
+	<!-- 설정파일을 java파일로 만들었으니 자바 파일을 찾아라 (annotation) -->
+	<context:annotation-config/>
+
+	<bean id="appleSpeaker" class="kr.hs.study.beans.AppleSpeaker">
+		<constructor-arg value="0" type="int"/>
+	</bean>
+	<bean id="sonySpeaker" class="kr.hs.study.beans.SonySpeaker">
+		<constructor-arg value="0" type="int"/>
+	</bean> 
+	
+	<bean id="lgTv" class="kr.hs.study.beans.LgTv">
+		<constructor-arg value="0" type="int"/>
+		<constructor-arg value="false" type="boolean" />
+		<constructor-arg ref="appleSpeaker"/>
+	</bean>
+	
+	<bean id="samsungTv" class="kr.hs.study.beans.SamsungTv">
+		<property name="price" value="0"/>
+		<property name="power" value="false"/>
+		<property name="speaker" ref="sonySpeaker"/>
+	</bean>
+	
+</beans>

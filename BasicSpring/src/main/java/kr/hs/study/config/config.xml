@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- IOC container 에서 객체생성 -->
+	<!-- xml파일을 로딩할때 객체가 생성됨 -->
+	
+<!--<bean class="kr.hs.study.beans.TestBean"/> -->
+	<bean id="t2" class="kr.hs.study.beans.TestBean"/>
+	
+	<!-- lazy-init="true" 속성 추가하면 xml파일 로딩시에 객체 생성X getBean()시에 객체생성
+	(객체생성 시기를 늦춤) -->
+	<!-- scope="prototype" 속성 추가하면 싱글톤XX 객체 가져올때마다 새로운 객체 생성 -->
+	
+</beans>
